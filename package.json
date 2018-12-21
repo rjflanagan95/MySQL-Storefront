@@ -1,0 +1,22 @@
+{
+  "name": "mysql-storefront",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjflanagan95/MySQL-Storefront.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjflanagan95/MySQL-Storefront/issues"
+  },
+  "homepage": "https://github.com/rjflanagan95/MySQL-Storefront#readme",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
