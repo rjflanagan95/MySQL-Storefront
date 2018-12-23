@@ -102,7 +102,7 @@ function addToInventory() {
         ], function(err, res) {
             if (err) throw err;
             for (var i = 0; i < res.length; i++) {
-                console.log("product updated");
+                console.log("Product successfully updated");
             }
             connection.end();
         });
@@ -139,23 +139,8 @@ function addNewItem() {
             stock_quantity: parseFloat(response.product_qty)
         }, function(err, res) {
             if (err) throw err;
+            console.log("Items successfully added");
             connection.end();
         });
-    });
-}
-
-function printInventory() {
-    connection.query("SELECT * FROM products", function(err, res) {
-        if (err) throw err;
-        for (var i = 0; i < res.length; i++) {
-            console.log("~~~~~~~~~~");
-            console.log("Item ID: " + res[i].item_id);
-            console.log("Product Name: " + res[i].product_name);
-            console.log("Department: " + res[i].department_name);
-            console.log("Price: $" + res[i].price);
-            console.log("Qty: " + res[i].stock_quantity);
-            console.log("~~~~~~~~~~");
-        }
-        connection.end();
     });
 }
