@@ -1,15 +1,3 @@
-// view products for sale
-// list every available item: item ID, name, price, quantity
-
-// view low inventory
-// all items with inventory less than five
-
-// add to inventory
-// display a prompt to let the manager add more of an item currently in the store
-
-// add new product
-// add a completely new product to the store
-
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 const keys = require("./keys");
@@ -143,18 +131,31 @@ function addNewItem() {
             type: "input"
         }
     ]).then(function(response) {
-        connection.query("SELECT * FROM products WHERE stock_quantity BETWEEN 0 AND 5", function(err, res) {
+        connection.query("INSERT INTO products SET ?",
+        {
+            product_name: (response.product_name).toString(),
+            department_name: (response.department_name).toString(),
+            price: parseFloat(response.product_price),
+            stock_quantity: parseFloat(response.product_qty)
+        }, function(err, res) {
             if (err) throw err;
-            for (var i = 0; i < res.length; i++) {
-                console.log("~~~~~~~~~~");
-                console.log("Item ID: " + res[i].item_id);
-                console.log("Product Name: " + res[i].product_name);
-                console.log("Department: " + res[i].department_name);
-                console.log("Price: $" + res[i].price);
-                console.log("Qty: " + res[i].stock_quantity);
-                console.log("~~~~~~~~~~");
-            }
             connection.end();
         });
+    });
+}
+
+function printInventory() {
+    connection.query("SELECT * FROM products", function(err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            console.log("~~~~~~~~~~");
+            console.log("Item ID: " + res[i].item_id);
+            console.log("Product Name: " + res[i].product_name);
+            console.log("Department: " + res[i].department_name);
+            console.log("Price: $" + res[i].price);
+            console.log("Qty: " + res[i].stock_quantity);
+            console.log("~~~~~~~~~~");
+        }
+        connection.end();
     });
 }
