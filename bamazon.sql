@@ -32,7 +32,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Roomba", "Home Electronics", 200, 70);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Mountain Bike", "Sporting Goods", 600, 20);
+VALUES ("Mountain Bike", "Sporting Goods", 600, 3);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("4K TV", "Home Electronics", 400, 300);
@@ -42,3 +42,5 @@ VALUES ("Full Mattress", "Furniture and Bedding", 360, 70);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Large Rug", "Furniture and Bedding", 130, 100);
+
+SELECT * FROM products
